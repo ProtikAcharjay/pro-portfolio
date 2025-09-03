@@ -5,46 +5,19 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Download, Mail, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { portfolioData } from '@/lib/data/portfolio-data';
+import { TechBackground } from '@/components/tech-background';
 
 export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background/50 to-primary/5">
+      {/* Tech-Themed Background */}
+      <TechBackground />
+      
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => {
-          const randomX = Math.random() * 1200;
-          const randomY = Math.random() * 800;
-          const randomEndY = Math.random() * 800;
-          const randomDuration = Math.random() * 10 + 10;
-          
-          return (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-primary/30 rounded-full"
-              initial={{ 
-                x: randomX,
-                y: randomY,
-                opacity: 0 
-              }}
-              animate={{
-                y: [null, randomEndY],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: randomDuration,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
-          );
-        })}
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

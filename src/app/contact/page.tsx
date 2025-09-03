@@ -148,8 +148,22 @@ export default function ContactPage() {
               Let's <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Connect</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Ready to bring your ideas to life? I'd love to hear about your project and discuss how we can work together.
+              Ready to build something amazing? Let's discuss your software development needs, web applications, or technical consulting requirements.
             </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2">
+                <span className="text-cyan-400">💻</span>
+                Software Development
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-green-400">🌐</span>
+                Web Applications
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-purple-400">💡</span>
+                Technical Consulting
+              </span>
+            </div>
             
             <div className="flex items-center justify-center space-x-6 text-sm">
               <div className="flex items-center space-x-2 text-green-600">

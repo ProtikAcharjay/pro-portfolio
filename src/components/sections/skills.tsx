@@ -5,31 +5,40 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Database, Smartphone, Settings } from 'lucide-react';
 import { portfolioData } from '@/lib/data/portfolio-data';
+import { getTechColor } from '@/lib/tech-colors';
 
 const skillCategories = [
   {
     title: 'Frontend Development',
     icon: Code,
     skills: portfolioData.skills.frontend,
-    color: 'text-blue-500'
+    color: 'text-blue-400',
+    bgColor: 'bg-blue-500/10',
+    borderColor: 'border-blue-500/20'
   },
   {
     title: 'Backend Development',
     icon: Settings,
     skills: portfolioData.skills.backend,
-    color: 'text-green-500'
+    color: 'text-green-400',
+    bgColor: 'bg-green-500/10',
+    borderColor: 'border-green-500/20'
   },
   {
     title: 'Database & Cloud',
     icon: Database,
     skills: portfolioData.skills.database,
-    color: 'text-purple-500'
+    color: 'text-purple-400',
+    bgColor: 'bg-purple-500/10',
+    borderColor: 'border-purple-500/20'
   },
   {
     title: 'Mobile & Tools',
     icon: Smartphone,
     skills: [...portfolioData.skills.mobile, ...portfolioData.skills.tools],
-    color: 'text-orange-500'
+    color: 'text-orange-400',
+    bgColor: 'bg-orange-500/10',
+    borderColor: 'border-orange-500/20'
   }
 ];
 
@@ -59,36 +68,44 @@ export function SkillsSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+              <Card className={`h-full hover:shadow-lg transition-all duration-300 ${category.borderColor} border hover:border-opacity-40`}>
                 <CardHeader className="text-center">
-                  <div className={`inline-flex p-3 rounded-full bg-muted mb-4`}>
+                  <div className={`inline-flex p-3 rounded-full ${category.bgColor} mb-4 mx-auto`}>
                     <category.icon className={`h-6 w-6 ${category.color}`} />
                   </div>
-                  <CardTitle className="text-lg">{category.title}</CardTitle>
+                  <CardTitle className={`text-lg ${category.color}`}>{category.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill, skillIndex) => (
-                      <motion.div
-                        key={skill}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ 
-                          duration: 0.3, 
-                          delay: index * 0.1 + skillIndex * 0.05 
-                        }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Badge 
-                          variant="secondary" 
-                          className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
+                    {category.skills.map((skill, skillIndex) => {
+                      const techColor = getTechColor(skill);
+                      return (
+                        <motion.div
+                          key={skill}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ 
+                            duration: 0.3, 
+                            delay: index * 0.1 + skillIndex * 0.05 
+                          }}
+                          viewport={{ once: true }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          {skill}
-                        </Badge>
-                      </motion.div>
-                    ))}
+                          <Badge 
+                            className={`text-xs border transition-all duration-300 cursor-pointer hover:scale-105 ${
+                              techColor.bg
+                            } ${
+                              techColor.text
+                            } ${
+                              techColor.border
+                            } hover:shadow-sm`}
+                          >
+                            {skill}
+                          </Badge>
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </CardContent>
               </Card>
@@ -110,31 +127,39 @@ export function SkillsSection() {
           </div>
           
           <div className="flex flex-wrap justify-center gap-3">
-            {Object.values(portfolioData.skills).flat().map((skill, index) => (
-              <motion.div
-                key={`${skill}-${index}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ 
-                  duration: 0.3, 
-                  delay: index * 0.02 
-                }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  scale: 1.1,
-                  rotateZ: [-1, 1, -1],
-                  transition: { duration: 0.3 }
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Badge 
-                  variant="outline" 
-                  className="text-sm px-4 py-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 cursor-pointer"
+            {Object.values(portfolioData.skills).flat().map((skill, index) => {
+              const techColor = getTechColor(skill);
+              return (
+                <motion.div
+                  key={`${skill}-${index}`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    duration: 0.3, 
+                    delay: index * 0.02 
+                  }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    scale: 1.1,
+                    rotateZ: [-1, 1, -1],
+                    transition: { duration: 0.3 }
+                  }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {skill}
-                </Badge>
-              </motion.div>
-            ))}
+                  <Badge 
+                    className={`text-sm px-4 py-2 border transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg ${
+                      techColor.bg
+                    } ${
+                      techColor.text
+                    } ${
+                      techColor.border
+                    }`}
+                  >
+                    {skill}
+                  </Badge>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>

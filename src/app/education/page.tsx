@@ -66,8 +66,22 @@ export default function EducationPage() {
               {' & Learning'}
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              My academic foundation and commitment to continuous learning in technology
+              My Computer Science & Engineering foundation and commitment to continuous learning in software development
             </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2">
+                <span className="text-blue-400">🎓</span>
+                Computer Science Education
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-green-400">📋</span>
+                Professional Certifications
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-purple-400">💡</span>
+                Continuous Learning
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>

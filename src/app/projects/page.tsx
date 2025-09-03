@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { portfolioData } from '@/lib/data/portfolio-data';
+import { getTechColor } from '@/lib/tech-colors';
 
 const categoryIcons = {
   'Full-Stack': Code,
@@ -66,8 +67,22 @@ export default function ProjectsPage() {
               My <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Projects</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              A collection of projects showcasing my technical skills and creative problem-solving abilities
+              A collection of software engineering projects showcasing full-stack development, web technologies, and computer science principles
             </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2">
+                <span className="text-cyan-400">💻</span>
+                Software Engineering
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-green-400">🌐</span>
+                Web Development
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-purple-400">🔧</span>
+                System Architecture
+              </span>
+            </div>
             
             <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
@@ -250,11 +265,23 @@ export default function ProjectsPage() {
 
                           {/* Technologies */}
                           <div className="flex flex-wrap gap-1">
-                            {project.technologies.slice(0, 3).map((tech) => (
-                              <Badge key={tech} variant="secondary" className="text-xs px-2 py-1">
-                                {tech}
-                              </Badge>
-                            ))}
+                            {project.technologies.slice(0, 3).map((tech) => {
+                              const techColor = getTechColor(tech);
+                              return (
+                                <Badge 
+                                  key={tech} 
+                                  className={`text-xs px-2 py-1 border transition-all duration-300 ${
+                                    techColor.bg
+                                  } ${
+                                    techColor.text
+                                  } ${
+                                    techColor.border
+                                  }`}
+                                >
+                                  {tech}
+                                </Badge>
+                              );
+                            })}
                             {project.technologies.length > 3 && (
                               <Badge variant="secondary" className="text-xs px-2 py-1">
                                 +{project.technologies.length - 3}

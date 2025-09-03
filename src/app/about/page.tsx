@@ -79,8 +79,22 @@ export default function AboutPage() {
               About <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Me</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Passionate developer with {portfolioData.stats.yearsOfExperience} years of experience creating digital solutions
+              Computer Science Engineer & Full-Stack Developer with {portfolioData.stats.yearsOfExperience} years of experience in software development, web technologies, and system architecture
             </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground mb-6">
+              <span className="flex items-center gap-2">
+                <span className="text-cyan-400">🎓</span>
+                Computer Science & Engineering
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-green-400">💻</span>
+                Software Development
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-purple-400">🌐</span>
+                Web Development Expert
+              </span>
+            </div>
             
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <div className="flex items-center space-x-2 text-muted-foreground">

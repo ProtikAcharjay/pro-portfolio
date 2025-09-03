@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { portfolioData } from '@/lib/data/portfolio-data';
 
@@ -97,7 +98,8 @@ export function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2">
+              <ThemeToggle />
               <Button size="sm" variant="ghost" asChild>
                 <Link href={portfolioData.personal.social.github} target="_blank">
                   <Github className="h-4 w-4" />
@@ -150,6 +152,9 @@ export function Navigation() {
                   </nav>
                   
                   <div className="flex flex-col space-y-4">
+                    <div className="flex justify-center">
+                      <ThemeToggle />
+                    </div>
                     <div className="flex justify-center space-x-4">
                       <Button size="sm" variant="outline" asChild>
                         <Link href={portfolioData.personal.social.github} target="_blank">

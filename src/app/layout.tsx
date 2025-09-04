@@ -4,7 +4,6 @@ import "./globals.css";
 import { Navigation } from "@/components/layout/navigation";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import { PageBackground } from "@/components/page-background";
 import { TechBackground } from "@/components/tech-background";
 import { portfolioData } from "@/lib/data/portfolio-data";
 import Script from 'next/script';
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
     template: `%s | ${portfolioData.personal.name}`,
   },
   description: portfolioData.personal.bio,
-  keywords: ["developer", "portfolio", "web development", "full stack", "react", "next.js"],
+  keywords: ["developer", "portfolio", "web development", "full stack", "react", "next.js", "javascript", "typescript", "laravel", "php", "tailwindcss", "node.js", "express", "mongodb", "sql", "github", "linkedin", "bugs", "projects", "contact", "resume", "cv", "about me", "software engineer", "programmer", "coder", "tech enthusiast", "existing projects", "protik", "Protik Acharjay"],
   authors: [{ name: portfolioData.personal.name }],
   creator: portfolioData.personal.name,
   openGraph: {
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${portfolioData.personal.name} - ${portfolioData.personal.title}`,
     description: portfolioData.personal.bio,
-    creator: "@yourusername",
+    creator: "@ProtikAcharjay",
   },
   robots: {
     index: true,
@@ -54,7 +53,7 @@ export default function RootLayout({
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-YC76N0N3S0`} // replace with your GA ID
+          src={`https://www.googletagmanager.com/gtag/js?id=G-YC76N0N3S0`}
         />
         <Script
           id="google-analytics"

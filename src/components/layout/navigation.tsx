@@ -163,7 +163,7 @@ export function Navigation() {
                   
                   <div className="flex flex-col space-y-4">
                     <div className="flex justify-center">
-                      <ThemeToggle />
+                      {/* <ThemeToggle /> */}
                     </div>
                     <div className="flex justify-center space-x-4">
                       <Button size="sm" variant="outline" asChild>

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Download, Mail, Code, Zap, Globe, Cpu } from 'lucide-react';
+import { ArrowRight, Download, Mail, Code, Zap, Globe, Cpu, Terminal, Database, Cloud } from 'lucide-react';
 import Link from 'next/link';
 import { portfolioData } from '@/lib/data/portfolio-data';
 import { useEffect, useState, useRef } from 'react';
@@ -22,178 +22,125 @@ const devTerms = [
   'bug', 'fix', 'prod', 'dev', 'staging', 'lint', 'refactor'
 ];
 
-interface TechElement {
-  id: number;
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  text: string;
-  size: number;
-  color: string;
-  opacity: number;
-  mass: number;
-}
+// Tech terms for floating animation
+const techTerms = [
+  'React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker', 'GraphQL',
+  'MongoDB', 'PostgreSQL', 'Redis', 'Kubernetes', 'TensorFlow', 'WebGL', 'Three.js',
+  'Serverless', 'Microservices', 'CI/CD', 'DevOps', 'Machine Learning', 'Blockchain'
+];
 
-function TechBallpit() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [elements, setElements] = useState<TechElement[]>([]);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const animationRef = useRef<number>();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+// Floating tech terms component
+function FloatingTech() {
+  const [terms, setTerms] = useState([]);
+  const containerRef = useRef(null);
 
-  // Initialize elements
   useEffect(() => {
-    const updateDimensions = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setDimensions({ width: rect.width, height: rect.height });
-      }
+    const createFloatingTerms = () => {
+      const newTerms = techTerms.map((term, index) => ({
+        id: index,
+        text: term,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        delay: Math.random() * 20,
+        duration: 15 + Math.random() * 10,
+        size: 0.8 + Math.random() * 0.4
+      }));
+      setTerms(newTerms);
     };
 
-    updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    createFloatingTerms();
   }, []);
-
-  useEffect(() => {
-    if (dimensions.width && dimensions.height) {
-      const newElements: TechElement[] = [];
-      
-      for (let i = 0; i < 40; i++) {
-        const size = Math.random() * 20 + 12;
-        newElements.push({
-          id: i,
-          x: Math.random() * (dimensions.width - size * 2) + size,
-          y: Math.random() * (dimensions.height - size * 2) + size,
-          vx: (Math.random() - 0.5) * 2,
-          vy: (Math.random() - 0.5) * 2,
-          text: devTerms[Math.floor(Math.random() * devTerms.length)],
-          size,
-          color: `hsl(${240 + i * 8}, 70%, ${50 + (i % 3) * 10}%)`,
-          opacity: 0.7,
-          mass: size / 10
-        });
-      }
-      
-      setElements(newElements);
-    }
-  }, [dimensions]);
-
-  // Mouse tracking
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setMousePos({ 
-          x: e.clientX - rect.left, 
-          y: e.clientY - rect.top 
-        });
-      }
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-      return () => container.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
-
-  // Animation loop
-  useEffect(() => {
-    const animate = () => {
-      setElements(prevElements => {
-        return prevElements.map(element => {
-          let { x, y, vx, vy } = element;
-          
-          // Mouse repulsion (magnetic effect)
-          const dx = x - mousePos.x;
-          const dy = y - mousePos.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 100 && distance > 0) {
-            const force = (100 - distance) / 100;
-            const angle = Math.atan2(dy, dx);
-            vx += Math.cos(angle) * force * 3;
-            vy += Math.sin(angle) * force * 3;
-          }
-          
-          // Update position
-          x += vx;
-          y += vy;
-          
-          // Boundary collisions with bounce
-          if (x <= element.size || x >= dimensions.width - element.size) {
-            vx *= -0.8;
-            x = Math.max(element.size, Math.min(dimensions.width - element.size, x));
-          }
-          if (y <= element.size || y >= dimensions.height - element.size) {
-            vy *= -0.8;
-            y = Math.max(element.size, Math.min(dimensions.height - element.size, y));
-          }
-          
-          // Friction
-          vx *= 0.98;
-          vy *= 0.98;
-          
-          // Gravity (very subtle)
-          vy += 0.1;
-          
-          return { ...element, x, y, vx, vy };
-        });
-      });
-      
-      animationRef.current = requestAnimationFrame(animate);
-    };
-    
-    if (elements.length > 0) {
-      animationRef.current = requestAnimationFrame(animate);
-    }
-    
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [elements.length, mousePos, dimensions]);
 
   return (
-    <div 
-      ref={containerRef}
-      className="absolute inset-0 pointer-events-auto overflow-hidden"
-      style={{ cursor: 'none' }}
-    >
-      {elements.map(element => (
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+      {terms.map((term) => (
         <div
-          key={element.id}
-          className="absolute font-mono font-semibold select-none pointer-events-none"
+          key={term.id}
+          className="absolute text-blue-400/20 font-mono font-medium select-none"
           style={{
-            left: element.x - element.size / 2,
-            top: element.y - element.size / 2,
-            fontSize: `${element.size}px`,
-            color: element.color,
-            opacity: element.opacity,
-            textShadow: '0 0 10px rgba(139, 92, 246, 0.3)',
-            filter: 'drop-shadow(0 0 5px rgba(139, 92, 246, 0.2))'
+            left: `${term.x}%`,
+            top: `${term.y}%`,
+            fontSize: `${term.size}rem`,
+            animation: `float-${term.id} ${term.duration}s linear infinite`,
+            animationDelay: `${term.delay}s`
           }}
         >
-          {element.text}
+          {term.text}
         </div>
       ))}
       
-      {/* Custom cursor */}
-      <div
-        className="absolute pointer-events-none rounded-full border-2 border-primary/50 bg-primary/10"
-        style={{
-          left: mousePos.x - 25,
-          top: mousePos.y - 25,
-          width: 50,
-          height: 50,
-          transform: 'translate(-50%, -50%)',
-          transition: 'all 0.1s ease-out'
-        }}
-      />
+      <style jsx>{`
+        ${terms.map(term => `
+          @keyframes float-${term.id} {
+            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(${Math.sin(term.id) * 50}px); opacity: 0; }
+          }
+        `).join('')}
+      `}</style>
     </div>
+  );
+}
+// Matrix rain effect
+function MatrixRain() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+    const matrixArray = matrix.split("");
+    const fontSize = 10;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#0ff';
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+        ctx.fillStyle = `rgba(0, 255, 0, ${Math.random() * 0.5 + 0.1})`;
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    const interval = setInterval(draw, 35);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 pointer-events-none opacity-30"
+      style={{ mixBlendMode: 'screen' }}
+    />
   );
 }
 
@@ -205,26 +152,32 @@ export function Hero3D() {
         className="absolute inset-0 z-0"
         style={{
           background: `
-            radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.2) 0%, transparent 70%),
-            linear-gradient(135deg, hsl(240, 10%, 5%) 0%, hsl(240, 15%, 8%) 100%)
+            radial-gradient(circle at 25% 25%, rgba(80, 35, 140, 0.14) 0%, transparent 42%),
+            radial-gradient(circle at 75% 75%, rgba(70, 32, 130, 0.12) 0%, transparent 42%),
+            radial-gradient(circle at 50% 50%, rgba(95, 45, 150, 0.1) 0%, transparent 62%),
+            linear-gradient(135deg, hsl(240, 12%, 1.8%) 0%, hsl(240, 10%, 3.2%) 100%)
           `
         }}
       />
-      
-      {/* Instant Matrix Grid */}
+
+      <MatrixRain />
+
+      <FloatingTech />
+
       <div 
-        className="absolute inset-0 z-[1] opacity-10"
+        className="absolute inset-0 z-[1] opacity-6"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(139, 92, 246, 0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(139, 92, 246, 0.5) 1px, transparent 1px)
+            linear-gradient(rgba(65, 32, 120, 0.26) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(65, 32, 120, 0.26) 1px, transparent 1px)
           `,
           backgroundSize: '30px 30px',
           animation: 'matrix-drift 20s linear infinite'
         }}
       />
+
+
+
 
 
       {/* Content Overlay */}

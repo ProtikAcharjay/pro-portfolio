@@ -28,13 +28,13 @@ export function TechBackground() {
           <Suspense fallback={null}>
             <TechGrid />
             <FloatingCubes />
-            <CodeRain />
+            {/* <CodeRain /> */}
           </Suspense>
         </Canvas>
       </div>
 
       {/* Instant Matrix Rain */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
+      {/* <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
         {[...Array(30)].map((_, i) => (
           <div
             key={`rain-${i}`}
@@ -50,7 +50,7 @@ export function TechBackground() {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Instant Tech Symbols */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
@@ -87,7 +87,7 @@ export function TechBackground() {
 
       {/* Instant Grid Pattern */}
       <div 
-        className="fixed inset-0 pointer-events-none z-[1] opacity-5"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-2"
         style={{
           backgroundImage: `
             linear-gradient(rgba(139, 92, 246, 0.3) 1px, transparent 1px),

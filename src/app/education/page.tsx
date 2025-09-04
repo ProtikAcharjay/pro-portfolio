@@ -21,28 +21,28 @@ import { portfolioData } from '@/lib/data/portfolio-data';
 
 const continuousLearning = [
   {
-    title: 'Advanced React Patterns',
-    provider: 'Frontend Masters',
-    date: '2024',
-    description: 'Deep dive into advanced React patterns, performance optimization, and architectural decisions.'
-  },
-  {
-    title: 'AWS Solutions Architect Associate',
-    provider: 'Amazon Web Services',
-    date: '2023',
-    description: 'Comprehensive cloud architecture and AWS services training program.'
-  },
-  {
     title: 'System Design Fundamentals',
-    provider: 'Educative.io',
-    date: '2023',
+    provider: 'Youtube',
+    date: '2025',
     description: 'Learning scalable system design principles and distributed systems architecture.'
   },
   {
     title: 'Docker & Kubernetes Masterclass',
-    provider: 'Udemy',
-    date: '2023',
+    provider: 'Dockerhub',
+    date: '2025',
     description: 'Container orchestration and microservices deployment strategies.'
+  },
+  {
+    title: 'Algorithms & Data Structures',
+    provider: 'Self Study',
+    date: '2023',
+    description: 'Improving problem-solving skills and algorithmic thinking.'
+  },
+  {
+    title: 'AWS & Cloud Solutions',
+    provider: 'Amazon Web Services',
+    date: '2024',
+    description: 'Comprehensive understanding of cloud architecture and AWS services.'
   }
 ];
 

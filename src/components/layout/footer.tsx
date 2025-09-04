@@ -4,14 +4,13 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Github, Linkedin, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, Facebook } from 'lucide-react';
 import { portfolioData } from '@/lib/data/portfolio-data';
 
 const socialLinks = [
   { icon: Github, href: portfolioData.personal.social.github, label: 'GitHub' },
   { icon: Linkedin, href: portfolioData.personal.social.linkedin, label: 'LinkedIn' },
-  { icon: Twitter, href: portfolioData.personal.social.twitter, label: 'Twitter' },
-  { icon: Instagram, href: portfolioData.personal.social.instagram, label: 'Instagram' },
+  { icon: Facebook, href: portfolioData.personal.social.facebook, label: 'Facebook' },
 ];
 
 const quickLinks = [

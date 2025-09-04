@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Download, Mail, Code, Zap, Globe, Cpu } from 'lucide-react';
+import { ArrowRight, Download, Mail, Code, Zap, Globe, Cpu, Database } from 'lucide-react';
 import Link from 'next/link';
 import { portfolioData } from '@/lib/data/portfolio-data';
 import { useEffect, useState, useRef } from 'react';
@@ -11,7 +11,7 @@ import { useEffect, useState, useRef } from 'react';
 const techTerms = [
   'React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker', 'GraphQL',
   'MongoDB', 'PostgreSQL', 'Redis', 'Kubernetes', 'TensorFlow', 'WebGL', 'Three.js',
-  'Serverless', 'Microservices', 'CI/CD', 'DevOps', 'Machine Learning', 'Blockchain'
+  'Serverless', 'Microservices', 'CI/CD', 'DevOps', 'Machine Learning', 'Blockchain', 'AI', 'Django', 'Laravel', 'Git', 'Scrum', 'Bootstrap', 'TailwindCSS', 'Sass', 'HTML5', 'CSS3', 'Bug', 
 ];
 
 // Floating tech terms component
@@ -195,7 +195,7 @@ export function Hero3D() {
             <div className="flex flex-wrap justify-center items-center gap-6 text-lg font-medium text-white/80 mb-4">
               <div className="flex items-center gap-2">
                 <Code className="h-5 w-5 text-cyan-400" />
-                <span>Computer Science Engineer</span>
+                <span>Software Engineer</span>
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="h-5 w-5 text-yellow-400" />
@@ -206,9 +206,9 @@ export function Hero3D() {
                 <span>Web Development Expert</span>
               </div>
             </div>
-            <p className="text-lg text-white/60 mb-4">
+            {/* <p className="text-lg text-white/60 mb-4">
               🎓 Computer Science & Engineering | 💻 Software Development | 🌐 Web Technologies
-            </p>
+            </p> */}
           </motion.div>
 
           {/* Subtitle */}
@@ -254,8 +254,8 @@ export function Hero3D() {
             {[
               { label: 'Years Experience', value: `${portfolioData.stats.yearsOfExperience}+`, icon: Cpu },
               { label: 'Projects Built', value: `${portfolioData.stats.projectsCompleted}+`, icon: Code },
-              { label: 'Happy Clients', value: `${portfolioData.stats.happyClients}+`, icon: Globe },
-              { label: 'Code Commits', value: `${portfolioData.stats.codeCommits}+`, icon: Zap }
+              { label: 'Technologies Mastered', value: `${portfolioData.stats.technologiesMastered}+`, icon: Database },
+              { label: 'Existing Projects Enhanced', value: `${portfolioData.stats.existingProjectsEnhanced}+`, icon: Zap }
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="inline-flex p-3 rounded-full bg-primary/20 mb-3">

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import Image from 'next/image';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { 
   Code, 
@@ -239,7 +240,14 @@ export default function ProjectsPage() {
                         
                         {/* Project Image/Header */}
                         <div className="relative h-48 overflow-hidden">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20" />
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority={project.featured} // Only prioritize important images
+                          />
                           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                           
                           <div className="absolute top-4 right-4 z-10 flex space-x-2">
@@ -249,15 +257,6 @@ export default function ProjectsPage() {
                             >
                               {project.status}
                             </Badge>
-                          </div>
-                          
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-center">
-                              <CategoryIcon className="h-12 w-12 text-white/30 mx-auto mb-2" />
-                              <div className="text-4xl font-bold text-white/20 group-hover:text-white/30 transition-colors duration-300">
-                                {project.title.split(' ').map(word => word[0]).join('')}
-                              </div>
-                            </div>
                           </div>
                         </div>
 

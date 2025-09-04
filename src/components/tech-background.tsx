@@ -10,9 +10,9 @@ import { CodeRain } from './3d/code-rain';
 // Pre-generated tech symbols for instant rendering
 const techSymbols = [
   '<>', '</>', '{}', '[]', '=>', '!=', '&&', '||',
-  'JS', 'TS', 'API', 'CSS', 'SQL', 'Git', 'npm', 'HTTP',
+  'JS', 'TS', 'API', 'Bugs', 'SQL', 'Git', 'npm', 'HTTP',
   '⚛️', '🚀', '💻', '⚙️', '🔧', '📡', '🌐', '⚡',
-  '0x', 'FF', '01', '10', 'A1', 'B2', '*', '#', '@', '$'
+  '0x', 'FF', '01', '10', 'CSS', '404', '*', '#', '@', '$'
 ];
 
 export function TechBackground() {

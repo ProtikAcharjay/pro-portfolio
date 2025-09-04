@@ -23,12 +23,11 @@ import Link from 'next/link';
 import { portfolioData } from '@/lib/data/portfolio-data';
 
 const proficiencyLevels = [
-  { category: 'Frontend Development', level: 95 },
-  { category: 'Backend Development', level: 90 },
-  { category: 'Database Design', level: 85 },
-  { category: 'DevOps & Cloud', level: 80 },
-  { category: 'Mobile Development', level: 75 },
-  { category: 'UI/UX Design', level: 70 }
+  { category: 'Backend Development', level: 95 },
+  { category: 'Database Design', level: 90 },
+  { category: 'Frontend Development', level: 85 },
+  { category: 'DevOps & Cloud', level: 85 },
+  { category: 'Collaboration & Communication', level: 95 },
 ];
 
 const coreValues = [
@@ -49,18 +48,18 @@ const coreValues = [
   },
   {
     icon: Target,
-    title: 'Problem Solving',
-    description: 'Analyzing complex problems and creating innovative solutions that drive business value.'
+    title: 'Practical Solutions',
+    description: 'Enhancing existing systems and implementing effective solutions to real-world challenges.'
   }
 ];
 
 const interests = [
-  'Open Source Contributions',
-  'Tech Blogging',
-  'Mentoring',
-  'Photography',
-  'Travel',
-  'Gaming'
+  'Exploring New Technologies & Tools',
+  'AI Experiments & Learning',
+  'Singing & Music',
+  'Traveling',
+  'Playing Football',
+  'Gaming (FIFA)'
 ];
 
 export default function AboutPage() {
@@ -90,7 +89,7 @@ export default function AboutPage() {
               About <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Me</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Computer Science Engineer & Full-Stack Developer with {portfolioData.stats.yearsOfExperience} years of experience in software development, web technologies, and system architecture
+              Full-Stack Developer with {portfolioData.stats.yearsOfExperience} years of experience delivering web applications and enhancing existing projects. Passionate about modern web technologies and clean, maintainable code.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground mb-6">
               <span className="flex items-center gap-2">
@@ -151,17 +150,23 @@ export default function AboutPage() {
               viewport={{ once: true }}
             >
               <div className="relative">
-                <div className="w-full h-96 bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-2xl flex items-center justify-center">
-                  <div className="text-8xl font-bold text-primary/30">
-                    {portfolioData.personal.name.split(' ').map(word => word[0]).join('')}
-                  </div>
-                </div>
-                <div className="absolute top-4 right-4">
-                  <Badge className="bg-green-500 hover:bg-green-600">
-                    {portfolioData.personal.availability}
-                  </Badge>
-                </div>
-              </div>
+  <div className="w-full h-96 rounded-2xl overflow-hidden flex items-center justify-center bg-gray-100">
+    {/* Replace initials with image */}
+    <img
+      src="https://cdn.techtime.com.bd/techtime-images/uploads/X2CGmcL92sNZjHrDh08zB1kPPjrsq7pEfqWRJnCr.jpg"
+      alt="Profile"
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+  {/* Availability badge */}
+  <div className="absolute top-4 right-4">
+    <Badge className="bg-green-500 hover:bg-green-600">
+      {portfolioData.personal.availability}
+    </Badge>
+  </div>
+</div>
+
             </motion.div>
 
             <motion.div
@@ -173,14 +178,8 @@ export default function AboutPage() {
             >
               <div>
                 <h2 className="text-3xl font-bold mb-4">My Story</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  {portfolioData.personal.bio}
-                </p>
-                <p className="text-muted-foreground leading-relaxed mt-4">
-                  Over the years, I&apos;ve had the privilege of working with amazing teams and clients, 
-                  building everything from small business websites to large-scale enterprise applications. 
-                  My passion for clean code, user experience, and continuous learning drives me to 
-                  deliver exceptional results in every project.
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {portfolioData.personal.story}
                 </p>
               </div>
 
@@ -195,12 +194,12 @@ export default function AboutPage() {
                   <div className="text-sm text-muted-foreground">Projects</div>
                 </div>
                 <div className="text-center p-4 rounded-lg bg-muted/50">
-                  <div className="text-2xl font-bold text-primary">{portfolioData.stats.happyClients}+</div>
-                  <div className="text-sm text-muted-foreground">Happy Clients</div>
+                  <div className="text-2xl font-bold text-primary">{portfolioData.stats.technologiesMastered}+</div>
+                  <div className="text-sm text-muted-foreground">Technologies Mastered</div>
                 </div>
                 <div className="text-center p-4 rounded-lg bg-muted/50">
-                  <div className="text-2xl font-bold text-primary">{portfolioData.stats.codeCommits}+</div>
-                  <div className="text-sm text-muted-foreground">Commits</div>
+                  <div className="text-2xl font-bold text-primary">{portfolioData.stats.existingProjectsEnhanced}+</div>
+                  <div className="text-sm text-muted-foreground">Existing Projects Enhanced</div>
                 </div>
               </div>
             </motion.div>

@@ -21,7 +21,8 @@ personal: {
     github: "https://github.com/yourusername",
     linkedin: "https://linkedin.com/in/yourusername",
     twitter: "https://twitter.com/yourusername",
-    instagram: "https://instagram.com/yourusername"
+    instagram: "https://instagram.com/yourusername",
+    facebook: "https://www.facebook.com/yourusername"
   }
 }
 ```

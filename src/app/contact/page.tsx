@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -23,11 +23,12 @@ import {
   AlertCircle,
   Github,
   Linkedin,
-  Twitter,
-  ExternalLink
+  ExternalLink,
+  Facebook
 } from 'lucide-react';
 import Link from 'next/link';
 import { portfolioData } from '@/lib/data/portfolio-data';
+import emailjs from '@emailjs/browser';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -77,29 +78,29 @@ const socialLinks = [
     description: 'Professional networking'
   },
   {
-    icon: Twitter,
-    name: 'Twitter',
-    url: portfolioData.personal.social.twitter,
-    description: 'Follow my tech journey'
+    icon: Facebook,
+    name: 'Facebook',
+    url: portfolioData.personal.social.facebook,
+    description: 'Follow me on Facebook'
   }
 ];
 
 const faqs = [
   {
     question: 'What is your typical response time?',
-    answer: 'I typically respond to all inquiries within 24 hours, often much sooner during business hours.'
+    answer: 'I usually respond within 24 hours, and often much sooner during business hours for active projects.'
   },
   {
-    question: 'Do you work on weekends?',
-    answer: 'While I maintain work-life balance, I\'m available for urgent project needs and can accommodate different time zones.'
+    question: 'Do you work on existing projects or only new ones?',
+    answer: 'I specialize in taking over messy or legacy codebases — fixing critical bugs, refactoring, and adding new features seamlessly. At the same time, I’m equally experienced in building new projects from scratch.'
   },
   {
     question: 'What types of projects do you take on?',
-    answer: 'I work on web applications, mobile apps, API development, and full-stack solutions. I\'m particularly interested in innovative projects.'
+    answer: 'From API development to deployment and full-stack web or mobile applications, I handle it all. Whether it’s scaling an existing platform or delivering a brand-new solution, I ensure smooth delivery and long-term stability.'
   },
   {
     question: 'Do you provide ongoing support?',
-    answer: 'Yes, I offer maintenance and support packages for projects I\'ve developed to ensure long-term success.'
+    answer: 'Yes, I offer maintenance and support for both existing and newly developed projects — including feature-based or project-based agreements to keep your product running efficiently.'
   }
 ];
 
@@ -116,14 +117,27 @@ export default function ContactPage() {
     setSubmitStatus('idle');
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log('Form submitted:', data);
+      // Send email using EmailJS
+      const emailParams = {
+        from_name: data.name,
+        from_email: data.email,
+        subject: data.subject,
+        message: data.message,
+        project_type: data.projectType || 'Not specified',
+      };
+
+      await emailjs.send(
+        'service_oy7ghr8', // EmailJS service ID
+       'template_2cxqygf', // EmailJS template ID
+        emailParams,
+        'yZcUuIhnxW2gRHCyP' // EmailJS public key
+      );
+
+      console.log('Email sent successfully:', data);
       setSubmitStatus('success');
       reset();
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('Email sending error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -267,6 +281,16 @@ export default function ContactPage() {
                         {errors.message && (
                           <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
                         )}
+                      </div>
+
+                      {/* Project Type */}
+                      <div>
+                        <Label htmlFor="projectType">Project Type (Optional)</Label>
+                        <Input
+                          id="projectType"
+                          {...register('projectType')}
+                          placeholder="e.g., Web App, Mobile App, API"
+                        />
                       </div>
 
                       {/* Submit Status */}
@@ -417,6 +441,37 @@ export default function ContactPage() {
                 </Card>
               </motion.div>
             </div>
+          </div>
+          {/* Location Map */}
+          <div className="mt-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">My Location</CardTitle>
+                  <p className="text-muted-foreground">
+                    Find me in Kolabagan, Dhanmondi, Dhaka, Bangladesh
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.8998031847226!2d90.37314977501383!3d23.75105628458946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9b45e569251%3A0x8d0e7e0d45f7c4e2!2sKolabagan%2C%20Dhaka%2C%20Bangladesh!5e0!3m2!1sen!2sbd!4v1695822345678!5m2!1sen!2sbd"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>

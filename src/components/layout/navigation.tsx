@@ -13,6 +13,7 @@ import { portfolioData } from '@/lib/data/portfolio-data';
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
+  { name: 'Experience', href: '/experience' },
   { name: 'Education', href: '/education' },
   { name: 'Projects', href: '/projects' },
   { name: 'Contact', href: '/contact' },
@@ -50,9 +51,18 @@ export function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-              {portfolioData.personal.name.split(' ').map(word => word[0]).join('')}
-            </Link>
+            <div className="flex items-center gap-3">
+              <Link
+                href="/"
+                className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+              >
+                <img
+                  src="https://cdn.techtime.com.bd/techtime-images/uploads/X2CGmcL92sNZjHrDh08zB1kPPjrsq7pEfqWRJnCr.jpg"
+                  alt="Logo"
+                  className="w-10 h-10 rounded-full shadow-lg object-cover"
+                />
+              </Link>
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -99,7 +109,7 @@ export function Navigation() {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
           <div className="flex items-center space-x-2">
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
               <Button size="sm" variant="ghost" asChild>
                 <Link href={portfolioData.personal.social.github} target="_blank">
                   <Github className="h-4 w-4" />
@@ -114,7 +124,7 @@ export function Navigation() {
             <Button size="sm" asChild>
               <Link href="/contact">
                 <Mail className="h-4 w-4 mr-2" />
-                Hire Me
+                Let's Connect
               </Link>
             </Button>
           </motion.div>
@@ -172,7 +182,7 @@ export function Navigation() {
                     <Button asChild>
                       <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                         <Mail className="h-4 w-4 mr-2" />
-                        Hire Me
+                        Let's Connect
                       </Link>
                     </Button>
                   </div>

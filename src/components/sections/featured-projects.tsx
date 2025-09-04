@@ -39,18 +39,24 @@ export function FeaturedProjectsSection() {
             >
               <Card className="group h-full hover:shadow-2xl transition-all duration-500 overflow-hidden border-0 shadow-lg">
                 {/* Project Image */}
-                <div className="relative h-48 md:h-64 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20" />
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={project.featured} // Only prioritize important images
+                  />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-                  <div className="absolute top-4 right-4 flex space-x-2">
-                    <Badge variant="secondary" className="bg-white/90 text-black">
+                  
+                  <div className="absolute top-4 right-4 z-10 flex space-x-2">
+                    <Badge 
+                      variant={project.status === 'Live' ? 'default' : 'secondary'}
+                      className={project.status === 'Live' ? 'bg-green-500 hover:bg-green-600' : ''}
+                    >
                       {project.status}
                     </Badge>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-6xl font-bold text-white/20 group-hover:text-white/30 transition-colors duration-300">
-                      {project.title.split(' ').map(word => word[0]).join('')}
-                    </div>
                   </div>
                 </div>
 

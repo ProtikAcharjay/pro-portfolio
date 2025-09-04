@@ -33,9 +33,9 @@ const skillCategories = [
     borderColor: 'border-purple-500/20'
   },
   {
-    title: 'Mobile & Tools',
+    title: 'Tools & Soft Skills',
     icon: Smartphone,
-    skills: [...portfolioData.skills.mobile, ...portfolioData.skills.tools],
+    skills: [...portfolioData.skills.tools, ...portfolioData.skills.softSkills],
     color: 'text-orange-400',
     bgColor: 'bg-orange-500/10',
     borderColor: 'border-orange-500/20'
@@ -127,7 +127,12 @@ export function SkillsSection() {
           </div>
           
           <div className="flex flex-wrap justify-center gap-3">
-            {Object.values(portfolioData.skills).flat().map((skill, index) => {
+          {[
+            ...portfolioData.skills.frontend,
+            ...portfolioData.skills.backend,
+            ...portfolioData.skills.database,
+            ...portfolioData.skills.tools,
+          ].map((skill, index) => {
               const techColor = getTechColor(skill);
               return (
                 <motion.div

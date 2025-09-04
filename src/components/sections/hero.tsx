@@ -122,15 +122,15 @@ export function HeroSection() {
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl font-bold text-foreground">
-                {portfolioData.stats.happyClients}+
+                {portfolioData.stats.technologiesMastered}+
               </div>
-              <div className="text-sm text-muted-foreground mt-1">Happy Clients</div>
+              <div className="text-sm text-muted-foreground mt-1">Technologies Mastered</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl font-bold text-foreground">
-                {portfolioData.stats.codeCommits}+
+                {portfolioData.stats.existingProjectsEnhanced}+
               </div>
-              <div className="text-sm text-muted-foreground mt-1">Code Commits</div>
+              <div className="text-sm text-muted-foreground mt-1">Existing Projects Enhanced</div>
             </div>
           </motion.div>
         </div>

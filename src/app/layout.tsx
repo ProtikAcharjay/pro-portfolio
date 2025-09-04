@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { PageBackground } from "@/components/page-background";
 import { TechBackground } from "@/components/tech-background";
 import { portfolioData } from "@/lib/data/portfolio-data";
+import Script from 'next/script';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,6 +50,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-YC76N0N3S0`} // replace with your GA ID
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-YC76N0N3S0', { page_path: window.location.pathname });
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"

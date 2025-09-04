@@ -2,7 +2,7 @@
 
 import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Group } from 'three';
 
 const codeChars = ['0', '1', '{', '}', '<', '>', '/', '*', '#', '@', '!', '?', '&', '%'];
@@ -21,11 +21,13 @@ export function CodeRain() {
 
 function CodeColumn({ index }: { index: number }) {
   const columnRef = useRef<Group>(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   useFrame((state) => {
     if (columnRef.current) {
       columnRef.current.position.y = ((state.clock.elapsedTime * (1 + index * 0.1)) % 10) - 5;
     }
+    setElapsedTime(state.clock.elapsedTime);
   });
 
   const x = -6 + index * 0.8;
@@ -41,7 +43,7 @@ function CodeColumn({ index }: { index: number }) {
           anchorX="center"
           anchorY="middle"
         >
-          {codeChars[Math.floor((index * j + state.clock?.elapsedTime * 2) % codeChars.length)]}
+          {codeChars[Math.floor((index * j + elapsedTime * 2) % codeChars.length)]}
         </Text>
       ))}
     </group>

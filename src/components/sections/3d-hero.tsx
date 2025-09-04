@@ -2,25 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Download, Mail, Code, Zap, Globe, Cpu, Terminal, Database, Cloud } from 'lucide-react';
+import { ArrowRight, Download, Mail, Code, Zap, Globe, Cpu } from 'lucide-react';
 import Link from 'next/link';
 import { portfolioData } from '@/lib/data/portfolio-data';
 import { useEffect, useState, useRef } from 'react';
-
-// Developer terms for the ballpit
-const devTerms = [
-  // Code symbols
-  '</', '/>', '{}', '[]', '=>', '!=', '&&', '||', '++', '--', '===', '!==',
-  // Dev workflow
-  'debug', 'git', 'push', 'pull', 'merge', 'commit', 'branch', 'deploy',
-  'const', 'let', 'var', 'async', 'await', 'npm', 'yarn', 'build', 'test',
-  // Tech stack
-  'react', 'next', 'node', 'php', 'python', 'html', 'css', 'js', 'ts',
-  'docker', 'aws', 'api', 'json', 'sql', 'laravel', 'vue', 'express',
-  // Process & methodology
-  'scrum', 'agile', 'sprint', 'backlog', 'mvp', 'ci/cd', 'devops',
-  'bug', 'fix', 'prod', 'dev', 'staging', 'lint', 'refactor'
-];
 
 // Tech terms for floating animation
 const techTerms = [
@@ -31,24 +16,30 @@ const techTerms = [
 
 // Floating tech terms component
 function FloatingTech() {
-  const [terms, setTerms] = useState([]);
-  const containerRef = useRef(null);
+  type FloatingTerm = {
+    id: number;
+    text: string;
+    x: number;
+    y: number;
+    delay: number;
+    duration: number;
+    size: number;
+  };
+
+  const [terms, setTerms] = useState<FloatingTerm[]>([]);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const createFloatingTerms = () => {
-      const newTerms = techTerms.map((term, index) => ({
-        id: index,
-        text: term,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        delay: Math.random() * 20,
-        duration: 15 + Math.random() * 10,
-        size: 0.8 + Math.random() * 0.4
-      }));
-      setTerms(newTerms);
-    };
-
-    createFloatingTerms();
+    const newTerms = techTerms.map((term, index) => ({
+      id: index,
+      text: term,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 20,
+      duration: 15 + Math.random() * 10,
+      size: 0.8 + Math.random() * 0.4
+    }));
+    setTerms(newTerms);
   }, []);
 
   return (
@@ -68,7 +59,6 @@ function FloatingTech() {
           {term.text}
         </div>
       ))}
-      
       <style jsx>{`
         ${terms.map(term => `
           @keyframes float-${term.id} {
@@ -82,14 +72,18 @@ function FloatingTech() {
     </div>
   );
 }
+
 // Matrix rain effect
 function MatrixRain() {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
-    
+    if (!ctx) return;
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -99,25 +93,19 @@ function MatrixRain() {
     window.addEventListener('resize', resizeCanvas);
 
     const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-    const matrixArray = matrix.split("");
+    const matrixArray = matrix.split('');
     const fontSize = 10;
     const columns = canvas.width / fontSize;
-    const drops = [];
+    const drops: number[] = Array(columns).fill(1);
 
-    for (let x = 0; x < columns; x++) {
-      drops[x] = 1;
-    }
-
-    function draw() {
+    const draw = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      ctx.fillStyle = '#0ff';
-      ctx.font = fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
         const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
         ctx.fillStyle = `rgba(0, 255, 0, ${Math.random() * 0.5 + 0.1})`;
+        ctx.font = fontSize + 'px monospace';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -125,7 +113,7 @@ function MatrixRain() {
         }
         drops[i]++;
       }
-    }
+    };
 
     const interval = setInterval(draw, 35);
 
@@ -148,7 +136,7 @@ export function Hero3D() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Instant CSS Background */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
           background: `
@@ -161,10 +149,9 @@ export function Hero3D() {
       />
 
       <MatrixRain />
-
       <FloatingTech />
 
-      <div 
+      <div
         className="absolute inset-0 z-[1] opacity-6"
         style={{
           backgroundImage: `
@@ -175,10 +162,6 @@ export function Hero3D() {
           animation: 'matrix-drift 20s linear infinite'
         }}
       />
-
-
-
-
 
       {/* Content Overlay */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -252,9 +235,9 @@ export function Hero3D() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            
+
             <Button size="lg" variant="outline" asChild className="border-white/30 text-white hover:bg-white/10">
-              <Link href={portfolioData.personal.resumeUrl} target="_blank">
+              <Link href={portfolioData.personal.resumeUrl} target="_blank" rel="noopener noreferrer">
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Link>
@@ -273,7 +256,7 @@ export function Hero3D() {
               { label: 'Projects Built', value: `${portfolioData.stats.projectsCompleted}+`, icon: Code },
               { label: 'Happy Clients', value: `${portfolioData.stats.happyClients}+`, icon: Globe },
               { label: 'Code Commits', value: `${portfolioData.stats.codeCommits}+`, icon: Zap }
-            ].map((stat, i) => (
+            ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="inline-flex p-3 rounded-full bg-primary/20 mb-3">
                   <stat.icon className="h-6 w-6 text-primary" />

@@ -177,7 +177,7 @@ export default function AboutPage() {
                   {portfolioData.personal.bio}
                 </p>
                 <p className="text-muted-foreground leading-relaxed mt-4">
-                  Over the years, I've had the privilege of working with amazing teams and clients, 
+                  Over the years, I&apos;ve had the privilege of working with amazing teams and clients, 
                   building everything from small business websites to large-scale enterprise applications. 
                   My passion for clean code, user experience, and continuous learning drives me to 
                   deliver exceptional results in every project.
@@ -301,7 +301,7 @@ export default function AboutPage() {
           >
             <h2 className="text-3xl font-bold mb-4">Beyond Code</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              When I'm not coding, you'll find me exploring these interests
+              When I&apos;m not coding, you&apos;ll find me exploring these interests
             </p>
           </motion.div>
 
@@ -336,10 +336,10 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-3xl font-bold mb-4">Let's Work Together</h2>
+            <h2 className="text-3xl font-bold mb-4">Let&apos;s Work Together</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              I'm always open to discussing new opportunities and interesting projects. 
-              Let's connect and see how we can create something amazing together.
+              I&apos;m always open to discussing new opportunities and interesting projects. 
+              Let&apos;s connect and see how we can create something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

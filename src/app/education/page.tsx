@@ -313,8 +313,8 @@ export default function EducationPage() {
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Technology evolves rapidly, and I believe in lifelong learning. I stay curious, 
               experiment with new technologies, and constantly challenge myself to grow. 
-              Whether it's through formal education, online courses, or hands-on projects, 
-              I'm always expanding my knowledge and skills.
+              Whether it&apos;s through formal education, online courses, or hands-on projects, 
+              I&apos;m always expanding my knowledge and skills.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

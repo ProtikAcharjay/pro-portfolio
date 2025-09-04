@@ -206,7 +206,7 @@ export default function ContactPage() {
                   <CardHeader>
                     <CardTitle className="text-2xl">Send me a message</CardTitle>
                     <p className="text-muted-foreground">
-                      Fill out the form below and I'll get back to you as soon as possible.
+                      Fill out the form below and I&apos;ll get back to you as soon as possible.
                     </p>
                   </CardHeader>
                   <CardContent>
@@ -277,7 +277,7 @@ export default function ContactPage() {
                           className="flex items-center space-x-2 text-green-600 bg-green-50 p-3 rounded-lg"
                         >
                           <CheckCircle className="h-5 w-5" />
-                          <span>Message sent successfully! I'll get back to you soon.</span>
+                          <span>Message sent successfully! I&apos;ll get back to you soon.</span>
                         </motion.div>
                       )}
 
@@ -412,7 +412,7 @@ export default function ContactPage() {
                     {portfolioData.personal.availability}
                   </Badge>
                   <p className="text-sm text-muted-foreground">
-                    I'm currently accepting new projects and would love to discuss your ideas.
+                    I&apos;m currently accepting new projects and would love to discuss your ideas.
                   </p>
                 </Card>
               </motion.div>

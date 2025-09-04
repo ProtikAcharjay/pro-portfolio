@@ -42,7 +42,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6"
           >
-            <span className="block text-foreground">Hi, I'm</span>
+            <span className="block text-foreground">Hi, I&apos;m</span>
             <span className="block bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent">
               {portfolioData.personal.name}
             </span>

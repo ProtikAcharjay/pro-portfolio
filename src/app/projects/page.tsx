@@ -351,7 +351,7 @@ export default function ProjectsPage() {
           >
             <h2 className="text-3xl font-bold mb-4">Like What You See?</h2>
             <p className="text-muted-foreground mb-8">
-              These projects represent just a fraction of what I can do. Let's discuss how I can help bring your ideas to life.
+              These projects represent just a fraction of what I can do. Let&apos;s discuss how I can help bring your ideas to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

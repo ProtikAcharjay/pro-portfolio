@@ -204,7 +204,7 @@ export function Hero3D() {
             className="mb-8"
           >
             <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-4">
-              <span className="block text-white mb-2">Hi, I'm</span>
+              <span className="block text-white mb-2">Hi, I&apos;m</span>
               <span className="block bg-gradient-to-r from-primary via-purple-400 to-blue-400 bg-clip-text text-transparent">
                 {portfolioData.personal.name}
               </span>

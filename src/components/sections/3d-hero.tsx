@@ -95,7 +95,7 @@ function MatrixRain() {
     const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
     const matrixArray = matrix.split('');
     const fontSize = 10;
-    const columns = canvas.width / fontSize;
+    const columns = Math.floor(canvas.width / fontSize) || 1;
     const drops: number[] = Array(columns).fill(1);
 
     const draw = () => {

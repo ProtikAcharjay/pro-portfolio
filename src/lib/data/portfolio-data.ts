@@ -281,6 +281,32 @@ experience: [
       ]
     },
     { id: 7, title: "Portfolio Website", description: "A modern, responsive portfolio website built with Next.js and Framer Motion animations.", longDescription: "Created a stunning portfolio website showcasing my work and skills. Features smooth animations, responsive design, contact forms, and a content management system for easy updates.", image: "/projects/portfolio.png", technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"], category: "Frontend", status: "Live", featured: false, demoUrl: "https://protik.vercel.app/", githubUrl: "https://github.com/ProtikAcharjay/pro-portfolio", features: [ "Smooth animations", "Responsive design", "Contact form", "SEO optimized", "Dark/light mode", "Fast loading" ] },
+    {
+      "id": 8,
+      "title": "Pro-Jira - Task & Workflow Management System",
+      "description": "A Jira-inspired task management system built around real user and admin workflows.",
+      "longDescription": "Pro-Jira is a full-featured task management product built with Laravel, Inertia.js, Vue 3, and Filament. It focuses on real-world team workflows, enabling users to manage tasks through Kanban boards, track time and progress, collaborate via comments, and gain productivity insights through reports. The system includes a powerful admin panel for managing users, teams, task statuses, and overall workflow configuration.",
+      "image": "/projects/pro-jira.png",
+      "technologies": ["Laravel", "Inertia.js", "Vue 3", "Filament", "MySQL"],
+      "category": "Full-Stack",
+      "status": "Demo",
+      "featured": true,
+      "demoUrl": "https://jira.techtime.com.bd",
+      "githubUrl": "https://youtu.be/OuKEyiqK46E",
+      "features": [
+        "Kanban-style task board with status columns",
+        "Task creation, assignment, and priority management",
+        "Drag-and-drop task status updates",
+        "Task comments and discussion threads",
+        "Work logs and time tracking",
+        "Completed tasks and history view",
+        "Realtime notifications for task updates",
+        "Team-based task visibility and access control",
+        "Reports and productivity insights",
+        "Admin panel for managing users, teams, tasks, and statuses"
+      ]
+    },
+
   ],
 
   

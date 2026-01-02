@@ -5,6 +5,7 @@ import { Navigation } from "@/components/layout/navigation";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TechBackground } from "@/components/tech-background";
+import { ChatButton } from "@/components/chat-button";
 import { portfolioData } from "@/lib/data/portfolio-data";
 import Script from 'next/script';
 
@@ -81,6 +82,7 @@ export default function RootLayout({
             <Navigation />
             <main className="flex-1">{children}</main>
             <Footer />
+            <ChatButton />
           </div>
         </ThemeProvider>
       </body>

@@ -1,5 +1,3 @@
-import { fa } from "zod/v4/locales";
-
 export const portfolioData = {
   personal: {
     name: "Protik Acharjay",

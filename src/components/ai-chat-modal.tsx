@@ -274,7 +274,7 @@ export function AIChatModal({ open, onOpenChange }: { open: boolean; onOpenChang
             <AnimatePresence>
               {messages.map((message, index) => (
                 <motion.div
-                  key={index}
+                  key={`message-${message.timestamp.getTime()}-${index}`}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
@@ -316,8 +316,10 @@ export function AIChatModal({ open, onOpenChange }: { open: boolean; onOpenChang
               ))}
               {isLoading && (
                 <motion.div
+                  key="loading-indicator"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
                   className="flex gap-3 justify-start"
                 >
                   <div className="flex-shrink-0">

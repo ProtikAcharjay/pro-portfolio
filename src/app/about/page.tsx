@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -148,12 +149,13 @@ export default function AboutPage() {
               viewport={{ once: true }}
             >
               <div className="relative">
-  <div className="w-full h-96 rounded-2xl overflow-hidden flex items-center justify-center bg-gray-100">
+  <div className="w-full h-96 rounded-2xl overflow-hidden flex items-center justify-center bg-gray-100 relative">
     {/* Replace initials with image */}
-    <img
+    <Image
       src="https://cdn.techtime.com.bd/techtime-images/uploads/X2CGmcL92sNZjHrDh08zB1kPPjrsq7pEfqWRJnCr.jpg"
       alt="Profile"
-      className="w-full h-full object-cover"
+      fill
+      className="object-cover"
     />
   </div>
 

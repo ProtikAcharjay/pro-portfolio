@@ -25,7 +25,7 @@ const MODELS = [
 
 // Create system prompt with portfolio context
 function createSystemPrompt(): string {
-  const { personal, skills, experience, education, projects, certifications } = portfolioData;
+  const { personal, skills, experience, education, projects } = portfolioData;
   
   return `You are an AI agent representing ${personal.name}, a ${personal.title}. Your role is to answer questions about ${personal.name} based on the following portfolio information. Always be professional, friendly, and helpful.
 
@@ -84,7 +84,12 @@ IMPORTANT RULES:
 7. Never make up information that's not in the portfolio data.`;
 }
 
-async function callGroqAPI(model: string, messages: any[]): Promise<{ response: string; model: string }> {
+interface ChatMessage {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+}
+
+async function callGroqAPI(model: string, messages: ChatMessage[]): Promise<{ response: string; model: string }> {
   const response = await fetch(`${GROQ_BASE_URL}/chat/completions`, {
     method: 'POST',
     headers: {

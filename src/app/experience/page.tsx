@@ -118,7 +118,7 @@ export default function ExperiencePage() {
           {/* Timeline Wrapper with semi-transparent background */}
           <div className="relative p-6 rounded-xl bg-card/95 shadow-lg">
             <VerticalTimeline lineColor="hsl(var(--primary))">
-              {portfolioData.experience.map((exp, index) => (
+              {portfolioData.experience.map((exp) => (
                 <VerticalTimelineElement
                   key={exp.id}
                   date={exp.duration}

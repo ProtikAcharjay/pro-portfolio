@@ -23,13 +23,6 @@ import Link from 'next/link';
 import { portfolioData } from '@/lib/data/portfolio-data';
 import { getTechColor } from '@/lib/tech-colors';
 
-const categoryIcons = {
-  'Full-Stack': Code,
-  'Frontend': Globe,
-  'Backend': Zap,
-  'Mobile': Smartphone
-};
-
 export default function ProjectsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');

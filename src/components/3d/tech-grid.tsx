@@ -2,7 +2,7 @@
 
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
-import { Group, Mesh } from 'three';
+import { Group } from 'three';
 
 export function TechGrid() {
   const gridRef = useRef<Group>(null);

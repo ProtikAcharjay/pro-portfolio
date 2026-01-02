@@ -5,7 +5,6 @@ import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { TechGrid } from './3d/tech-grid';
 import { FloatingCubes } from './3d/floating-cubes';
-import { CodeRain } from './3d/code-rain';
 
 // Pre-generated tech symbols for instant rendering
 const techSymbols = [

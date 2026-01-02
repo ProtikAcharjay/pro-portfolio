@@ -217,9 +217,6 @@ export default function ProjectsPage() {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 {filteredProjects.map((project, index) => {
-                  const CategoryIcon = categoryIcons[project.category as keyof typeof categoryIcons] || Code;
-
-                  
                   return (
                     <motion.div
                       key={project.id}

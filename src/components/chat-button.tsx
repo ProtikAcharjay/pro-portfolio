@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { AIChatModal } from '@/components/ai-chat-modal';
 import { MessageCircle, Sparkles, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { portfolioData } from '@/lib/data/portfolio-data';
 
 const ROTATING_MESSAGES = [
   "Chat with Protik's AI Assistant",

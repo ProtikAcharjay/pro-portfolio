@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, Github, Linkedin, Mail } from 'lucide-react';
+import Image from 'next/image';
 import { portfolioData } from '@/lib/data/portfolio-data';
 
 const navItems = [
@@ -56,10 +56,12 @@ export function Navigation() {
                 href="/"
                 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
               >
-                <img
+                <Image
                   src="https://cdn.techtime.com.bd/techtime-images/uploads/X2CGmcL92sNZjHrDh08zB1kPPjrsq7pEfqWRJnCr.jpg"
                   alt="Logo"
-                  className="w-10 h-10 rounded-full shadow-lg object-cover"
+                  width={40}
+                  height={40}
+                  className="rounded-full shadow-lg object-cover"
                 />
               </Link>
             </div>

@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { portfolioData } from '@/lib/data/portfolio-data';
 
-const GROQ_API_KEY = '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';
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const GROQ_BASE_URL = 'https://api.groq.com/openai/v1';
+
+// Validate API key is present
+if (!GROQ_API_KEY) {
+  console.error('GROQ_API_KEY is not set in environment variables');
+}
 
 // Available models in order of preference (fallback chain)
 // Using Groq's available models - will fallback if model name is incorrect
@@ -125,6 +130,14 @@ async function callGroqAPI(model: string, messages: any[]): Promise<{ response: 
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if API key is configured
+    if (!GROQ_API_KEY) {
+      return NextResponse.json(
+        { error: 'API key is not configured. Please set GROQ_API_KEY environment variable.' },
+        { status: 500 }
+      );
+    }
+
     const { message, conversationHistory } = await request.json();
 
     if (!message || typeof message !== 'string') {

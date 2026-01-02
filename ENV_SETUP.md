@@ -45,7 +45,7 @@ npm run dev
 3. **Add Environment Variable**
    - Click **Add New** button
    - **Key**: `GROQ_API_KEY`
-   - **Value**: Your Groq API key (e.g., `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`)
+   - **Value**: Your Groq API key (e.g., `your_actual_groq_api_key_here`)
    - **Environment**: Select all environments (Production, Preview, Development)
    - Click **Save**
 

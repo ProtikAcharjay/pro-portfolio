@@ -43,6 +43,8 @@ experience: [
       "Developed InfluencerHub end-to-end and successfully deployed it.",
       "Maintaining and improving the multi-vendor e-commerce platform.",
       "Enhancing features and collaborating on internal ERP tools.",
+      "Designed and implemented a Distribution Management System (DMS)",
+      "Contributing to and enhancing the Flutter-based mobile application.",
       "Excitedly contributing to future tech prospects and internal projects."
     ],
     technologies: ["Laravel", "Next.js", "MySQL", "Tailwind CSS", "REST API", "MinIO", "Git"]
@@ -227,8 +229,8 @@ experience: [
       category: "Full-Stack",
       status: "Live",
       featured: true,
-      demoUrl: "https://myportal.movr.store/",
-      githubUrl: "https://myportal.movr.store/",
+      demoUrl: "https://influencerhub.techtime.com.bd/",
+      githubUrl: "https://influencerhub.techtime.com.bd/",
       features: [
         "Order tracking and analytics",
         "Reward management system",
@@ -281,15 +283,15 @@ experience: [
     { id: 7, title: "Portfolio Website", description: "A modern, responsive portfolio website built with Next.js and Framer Motion animations.", longDescription: "Created a stunning portfolio website showcasing my work and skills. Features smooth animations, responsive design, contact forms, and a content management system for easy updates.", image: "/projects/portfolio.png", technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"], category: "Frontend", status: "Live", featured: false, demoUrl: "https://protik.vercel.app/", githubUrl: "https://github.com/ProtikAcharjay/pro-portfolio", features: [ "Smooth animations", "Responsive design", "Contact form", "SEO optimized", "Dark/light mode", "Fast loading" ] },
     {
       "id": 8,
-      "title": "Pro-Jira - Task & Workflow Management System",
+      "title": "Task-Board - Task & Workflow Management System",
       "description": "A Jira-inspired task management system built around real user and admin workflows.",
-      "longDescription": "Pro-Jira is a full-featured task management product built with Laravel, Inertia.js, Vue 3, and Filament. It focuses on real-world team workflows, enabling users to manage tasks through Kanban boards, track time and progress, collaborate via comments, and gain productivity insights through reports. The system includes a powerful admin panel for managing users, teams, task statuses, and overall workflow configuration.",
+      "longDescription": "Task-Board is a full-featured task management product built with Laravel, Inertia.js, Vue 3, and Filament. It focuses on real-world team workflows, enabling users to manage tasks through Kanban boards, track time and progress, collaborate via comments, and gain productivity insights through reports. The system includes a powerful admin panel for managing users, teams, task statuses, and overall workflow configuration.",
       "image": "/projects/pro-jira.png",
       "technologies": ["Laravel", "Inertia.js", "Vue 3", "Filament", "MySQL"],
       "category": "Full-Stack",
       "status": "Demo",
       "featured": true,
-      "demoUrl": "https://jira.techtime.com.bd",
+      "demoUrl": "https://task.techtime.com.bd",
       "githubUrl": "https://youtu.be/OuKEyiqK46E",
       "features": [
         "Kanban-style task board with status columns",
@@ -309,7 +311,7 @@ experience: [
 
   
   stats: {
-    yearsOfExperience: 2,
+    yearsOfExperience: 3,
     projectsCompleted: 25,
     technologiesMastered: 20,
     existingProjectsEnhanced: 10 
